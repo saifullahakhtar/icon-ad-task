@@ -2,26 +2,219 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* ---------- */
+/* Font Load */
+/* -------- */
+
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-55");
+
+/* --------------- */
+/* Global Styling */
+/* ------------- */
+
+body {
+  background-color: #000;
+  font-family: "Helvetica Neue", sans-serif;
+  line-height: 1;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@media only screen and (max-width: 768px) {
+  br {
+    display: none;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* --------------- */
+/* Tailwind Theme */
+/* ------------- */
+
+@layer components {
+  /* Hero */
+  .page-heading {
+    @apply font-medium text-white text-8xl px-12 lg:px-60 pt-40 tracking-tighter;
+  }
+
+  .hero-image {
+    @apply px-12 py-10;
+  }
+
+  .about-area {
+    @apply py-36;
+  }
+
+  .about-area > .p-wrap {
+    @apply px-12 md:px-0 w-full md:w-8/12 lg:w-6/12 mx-auto;
+  }
+
+  .p-wrap > .split-paragraph {
+    @apply font-semibold text-[3.5rem] text-white tracking-tight;
+  }
+
+  .p-wrap-2 {
+    @apply grid md:grid-cols-2;
+  }
+
+  .p-wrap-2 > div {
+    @apply md:col-start-2 px-12 md:px-5 overflow-hidden;
+  }
+
+  .p-wrap-2 .fade-in {
+    @apply text-light leading-6 font-light mt-16 translate-y-14 opacity-0;
+  }
+
+  /* Our Vision */
+  .our-vision {
+    @apply relative md:flex xl:grid xl:grid-cols-6 h-screen px-12 xl:px-20 overflow-hidden;
+  }
+
+  .vision-text-wrap {
+    @apply absolute top-0 left-0 z-20 w-full h-screen grid place-content-center;
+  }
+
+  .vision-heading {
+    @apply text-9xl md:text-[10rem] lg:text-[12rem] xl:text-[14rem] font-bold bg-gradient-to-b from-white to-transparent bg-clip-text text-transparent opacity-90 tracking-tighter;
+  }
+
+  .vision-text-box {
+    @apply w-8/12 lg:w-6/12 mx-auto xl:w-auto font-semibold text-3xl 2xl:text-4xl text-light px-10 py-20 xl:m-10 bg-black border border-dark rounded-3xl h-fit !mt-[29.5rem] tracking-tighter;
+  }
+
+  /* Why RMS */
+  .why-rms {
+    @apply mt-14 px-12 lg:px-60;
+  }
+
+  .why-rms .label {
+    @apply font-medium text-primary text-2xl tracking-tighter;
+  }
+
+  .why-rms .split-paragraph {
+    @apply font-semibold text-5xl md:text-[4.6rem] text-white tracking-tight mt-10;
+  }
+
+  .features-list {
+    @apply mt-44 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-8 text-white text-2xl leading-7;
+  }
+
+  /* Our Company */
+  .our-company {
+    @apply h-screen flex justify-end items-center;
+  }
+
+  .company-heading {
+    @apply text-8xl md:text-9xl md:text-[12rem] text-white font-bold translate-x-[60%];
+  }
+
+  /* Meet The Team */
+  .meet-the-team {
+    @apply pl-12 lg:pl-60;
+  }
+
+  .team-heading {
+    @apply font-semibold text-white text-6xl mb-20 tracking-tighter;
+  }
+
+  .person-name {
+    @apply text-white mt-4 mb-1 text-xl
+  }
+
+  /* Message */
+  .message {
+    @apply py-60;
+  }
+
+  .message-wrapper {
+    @apply px-12 md:px-0 w-full md:w-6/12 mx-auto;
+  }
+
+  .message-label {
+    @apply font-medium text-primary text-2xl tracking-tighter mb-20;
+  }
+
+  .message .split-paragraph {
+    @apply font-semibold text-5xl md:text-[3.5rem] text-white tracking-tight;
+  }
+
+  .person {
+    @apply flex items-center space-x-6 mt-12;
+  }
+
+  .avatar {
+    @apply rounded-full p-8 bg-light;
+  }
+
+  /* Instagram */
+  .instagram {
+    @apply bg-white;
+  }
+
+  .profile-name {
+    @apply flex items-center space-x-2 bg-black text-light font-light px-60 py-4;
+  }
+
+  .insta-feed {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-1 p-1;
+  }
+
+  .feed-wrap {
+    @apply relative cursor-pointer;
+  }
+
+  .feed-overlay {
+    @apply absolute top-0 left-0 w-full h-full bg-black/60 flex justify-center items-center space-x-6 text-white opacity-0 group-hover:opacity-100 duration-300 ease-in-out;
+  }
+
+  .feed-buttons {
+    @apply flex space-x-1 items-center text-sm;
+  }
+
+  .feed-icon {
+    @apply w-6 h-6 fill-white;
+  }
+
+  /* Footer */
+  .footer {
+    @apply pt-24 bg-white;
+  }
+
+  .footer-wrapper {
+    @apply px-12 lg:px-60 border-b border-[#CECECE];
+  }
+
+  .footer-block-1 {
+    @apply grid md:flex md:space-x-32 pb-14;
+  }
+
+  .footer-block-2 {
+    @apply pt-10 pb-16 grid sm:grid-cols-3 md:grid-cols-4 space-y-10 sm:space-y-0;
+  }
+
+  .footer .logo {
+    @apply mx-auto md:mx-0 mb-20 md:mb-0 w-2/12 grid place-content-end;
+  }
+
+  .newsletter {
+    @apply flex items-end w-full border-b border-[#C9C9C9] pb-2;
+  }
+
+  .form-input {
+    @apply ring-0 outline-none border-none text-3xl font-semibold w-full placeholder:text-[#CFCFCF] mt-6;
+  }
+
+  .links-heading {
+    @apply font-semibold text-lg;
+  }
+
+  .links-wrapper {
+    @apply grid grid-cols-2 text-sm tracking-tighter font-normal mt-8;
+  }
+
+  .copyrights {
+    @apply px-12 lg:px-60 grid md:grid-cols-4 text-sm pt-5 pb-16 text-center md:text-left;
+  }
+
+  .policy-links {
+    @apply md:col-start-3 flex justify-center md:justify-start items-center space-x-6 mt-5 md:mt-0;
+  }
+
 }
